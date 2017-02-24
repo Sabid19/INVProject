@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_layout1.cshtml";
+}
+
+<script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+@*<script src="~/Scripts/Highcharts-4.0.1/js/themes/gray.js"></script>*@
+<script src="~/Scripts/Highcharts-4.0.1/js/themes/grid.js"></script>
+@*<link href="~/Content/AdminLTE.css" rel="stylesheet" />*@
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <a href="~/UsersAdmin/Create" class="small-box bg-yellow">
+            <div class="inner">
+                <h3>Add</h3>
+                <h4>New User</h4>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user"></i>
+            </div>
+            @*<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="~/PurchaseEntry/Index" class="small-box bg-green">
+            <div class="inner">
+                <h3>New</h3>
+                <h4>Purchase</h4>
+            </div>
+            <div class="icon">
+                <i class="fa fa-truck"></i>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="~/SalesEntry/Index" class="small-box bg-aqua">
+            <div class="inner">
+                <h3>New</h3>
+                <h4>Sales</h4>
+            </div>
+            <div class="icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="~/Stock/index" class="small-box bg-red">
+            <div class="inner">
+                <h3>View</h3>
+                <h4>Stocks</h4>
+            </div>
+            <div class="icon">
+                <i class="fa fa-pie-chart"></i>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="box box-danger">
+    <div class="row box-body">
+        <div class="col-md-6">
+            <h3>Today's Sales: @ViewBag.todaySales  </h3>
+        </div>
+        <div class="col-md-6">
+            <h3 class="pull-right">Yesterday's Sales: @ViewBag.yesterdaySales</h3>
+        </div>
+    </div>
+</div>
+
+@*<div class="box">*@
+    @*<div class="col-sm-12" id="newContainer2">*@
+
+        <div class="box box-primary">
+            <div class="ibox-title">
+                <h5>
+                    Monthly Sales Graph
+                    @*<small>With custom colors.</small>*@
+                </h5>
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="lineChart" height="80"></canvas>
+                </div>
+            </div>
+        </div>
+    @*</div>*@
+@*</div>*@
+<br />
+
+<div class="row">
+    <div class="col-sm-12" id="newContainer"></div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/plugins/chartjs")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var lineData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    },
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(26,179,148,0.5)",
+                        strokeColor: "rgba(26,179,148,0.7)",
+                        pointColor: "rgba(26,179,148,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(26,179,148,1)",
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    }
+                ]
+            };
+
+            var lineOptions = {
+                scaleShowGridLines: true,
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleGridLineWidth: 1,
+                bezierCurve: true,
+                bezierCurveTension: 0.4,
+                pointDot: true,
+                pointDotRadius: 4,
+                pointDotStrokeWidth: 1,
+                pointHitDetectionRadius: 20,
+                datasetStroke: true,
+                datasetStrokeWidth: 2,
+                datasetFill: true,
+                responsive: true,
+            };
+
+
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+        });
+</script>
+}
