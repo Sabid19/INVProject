@@ -110,6 +110,9 @@ namespace POSWeb.Controllers.Sales
             string filenameExtension = string.Empty;
             byte[] bytes = rt.Render(reportType, deviceInfo, out mimeType, out encoding, out filenameExtension, out streamids, out warnings);
             Response.Clear();
+            Response.Write("<script>");
+            Response.Write("window.open('page.html','_blank')");
+            Response.Write("</script>");
             Response.Buffer = true;
             Response.ContentType = "Application/pdf";
             Response.BinaryWrite(bytes);
