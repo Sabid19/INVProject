@@ -850,6 +850,7 @@
     <Compile Include="Controllers\Purchase\Purchase1Controller.cs" />
     <Compile Include="Controllers\Purchase\PurchaseEntryController.cs" />
     <Compile Include="Controllers\Purchase\SupplierController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\Sales\SalesController.cs" />
     <Compile Include="Controllers\Sales\SalesEntryController.cs" />
     <Compile Include="Controllers\Sales\SalesReturnController.cs" />
@@ -870,6 +871,8 @@
     <Compile Include="ViewModel\Account\AccountVM.cs" />
     <Compile Include="ViewModel\InventoryModel.cs" />
     <Compile Include="ViewModel\PurchaseEntryVM.cs" />
+    <Compile Include="ViewModel\Stock\StockFilter.cs" />
+    <Compile Include="ViewModel\Stock\StockSearchVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -932,6 +935,8 @@
     <Content Include="Views\SalesReturn\Index.cshtml" />
     <Content Include="Views\SalesReturn\ReturnDetails.cshtml" />
     <Content Include="Views\SalesReturn\Returns.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Shared\_StocksPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
