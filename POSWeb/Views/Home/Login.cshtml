@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.TextBoxFor(m => m.Email,new { @class = "form-control", placeholder = "Email" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-1"></div>
@@ -74,10 +74,15 @@
                     </div>
             }
         </section>
-        <hr />
+        <hr />    
+            <h2>Login Info</h2>
+            <p>User Nmae : demo@yahoo.com Password : 12345678</p>        
     </div>
     <div class="col-lg-4"></div>
 </div>
+
+
+
 
 
 <link href="~/Scripts/AdminLTE/plugins/iCheck/square/blue.css" rel="stylesheet" />
