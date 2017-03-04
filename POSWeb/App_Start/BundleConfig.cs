@@ -403,14 +403,14 @@ namespace POSWeb
             //bundles.Add(new ScriptBundle("~/plugins/d3").Include(
             //          "~/Scripts/plugins/d3/d3.min.js"));
 
-            //// Markdown Styless
-            //bundles.Add(new StyleBundle("~/plugins/markdownStyles").Include(
-            //          "~/Content/plugins/bootstrap-markdown/bootstrap-markdown.min.css"));
+            // Markdown Styless
+            bundles.Add(new StyleBundle("~/plugins/markdownStyles").Include(
+                      "~/Content/plugins/bootstrap-markdown/bootstrap-markdown.min.css"));
 
-            //// Markdown Spin
-            //bundles.Add(new ScriptBundle("~/plugins/markdown").Include(
-            //          "~/Scripts/plugins/bootstrap-markdown/bootstrap-markdown.js",
-            //          "~/Scripts/plugins/bootstrap-markdown/markdown.js"));
+            // Markdown Spin
+            bundles.Add(new ScriptBundle("~/plugins/markdown").Include(
+                      "~/Scripts/plugins/bootstrap-markdown/bootstrap-markdown.js",
+                      "~/Scripts/plugins/bootstrap-markdown/markdown.js"));
         }
     }
 }
