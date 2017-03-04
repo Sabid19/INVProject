@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>INSPINIA | @ViewBag.Title</title>
+    <title>StoreAssistant | @ViewBag.Title</title>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <!-- Add local styles, mostly for plugins css file -->
@@ -14,7 +14,7 @@
         {@RenderSection("Styles", required: false)}
      
     <!-- Add jQuery Style direct - used for jQGrid plugin -->
-    <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
 
     <!-- Primary Inspinia style -->     
     @Styles.Render("~/Content/css")
@@ -23,10 +23,11 @@
 
     <!-- Section for main scripts render -->
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/plugins/slimScroll")
     @Scripts.Render("~/bundles/inspinia")
-
+    @*<link href="~/Content/AdminLTE.css" rel="stylesheet" />*@
     <link href="~/Content/StyleFromAdminLite.css" rel="stylesheet" />
 </head>
 <body>
