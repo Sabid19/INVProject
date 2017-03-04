@@ -232,6 +232,8 @@
     <Content Include="Content\landing\header_one.jpg" />
     <Content Include="Content\landing\header_two.jpg" />
     <Content Include="Content\landing\word_map.png" />
+    <Content Include="Content\metisMenu.css" />
+    <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\patterns\1.png" />
     <Content Include="Content\patterns\2.png" />
     <Content Include="Content\patterns\3.png" />
@@ -375,6 +377,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\metisMenu.js" />
+    <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\myscript.js" />
     <Content Include="Scripts\plugins\chartJs\Chart.min.js" />
