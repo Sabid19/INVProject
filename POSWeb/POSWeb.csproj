@@ -229,26 +229,8 @@
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\ourlogo.jpg" />
     <Content Include="Content\landing\avatar_all.png" />
-    <Content Include="Content\landing\header_one.jpg" />
-    <Content Include="Content\landing\header_two.jpg" />
-    <Content Include="Content\landing\word_map.png" />
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\metisMenu.min.css" />
-    <Content Include="Content\patterns\1.png" />
-    <Content Include="Content\patterns\2.png" />
-    <Content Include="Content\patterns\3.png" />
-    <Content Include="Content\patterns\4.png" />
-    <Content Include="Content\patterns\5.png" />
-    <Content Include="Content\patterns\6.png" />
-    <Content Include="Content\patterns\7.png" />
-    <Content Include="Content\patterns\congruent_pentagon.png" />
-    <Content Include="Content\patterns\header-profile-skin-1.png" />
-    <Content Include="Content\patterns\header-profile-skin-2.png" />
-    <Content Include="Content\patterns\header-profile-skin-3.png" />
-    <Content Include="Content\patterns\header-profile.png" />
-    <Content Include="Content\patterns\otis_redding.png" />
-    <Content Include="Content\patterns\shattered.png" />
-    <Content Include="Content\patterns\triangular.png" />
     <Content Include="Content\plugins\awesome-bootstrap-checkbox\awesome-bootstrap-checkbox.css" />
     <Content Include="Content\plugins\blueimp\css\blueimp-gallery-indicator.css" />
     <Content Include="Content\plugins\blueimp\css\blueimp-gallery-video.css" />
@@ -607,6 +589,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\patterns\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntityL\BusinessEntityL.csproj">
