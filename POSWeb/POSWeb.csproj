@@ -510,6 +510,10 @@
     <Compile Include="ViewModel\Account\AccountVM.cs" />
     <Compile Include="ViewModel\InventoryModel.cs" />
     <Compile Include="ViewModel\PurchaseEntryVM.cs" />
+    <Compile Include="ViewModel\Report\DayTotalVM.cs" />
+    <Compile Include="ViewModel\Report\PurchaseFilter.cs" />
+    <Compile Include="ViewModel\Report\PurchaseSearchVM.cs" />
+    <Compile Include="ViewModel\Report\SalesVM.cs" />
     <Compile Include="ViewModel\Stock\StockFilter.cs" />
     <Compile Include="ViewModel\Stock\StockSearchVM.cs" />
   </ItemGroup>
@@ -580,6 +584,8 @@
     <Content Include="Views\Shared\_StocksPartialView.cshtml" />
     <Content Include="Views\Report\DailySales.cshtml" />
     <Content Include="Views\Shared\_DailySalesPartialView.cshtml" />
+    <Content Include="Views\Report\MonthlySalesByDate.cshtml" />
+    <Content Include="Views\Report\Purchase.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

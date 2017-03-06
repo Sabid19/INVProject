@@ -7,6 +7,7 @@ using DataAccess.Repository;
 using DataAccess;
 using POSWeb.ViewModel.Stock;
 using System.Data.Entity;
+using POSWeb.ViewModel.Report;
 
 namespace POSWeb.Controllers
 {
@@ -14,6 +15,7 @@ namespace POSWeb.Controllers
     {
         Repository<Stock> stkrepo = new Repository<Stock>();
         Repository<Sale> salrepo = new Repository<Sale>();
+        ASITPOSDBEntities db = new ASITPOSDBEntities();
         // GET: Report
         public ActionResult Index()
         {
@@ -38,8 +40,84 @@ namespace POSWeb.Controllers
 
         public ActionResult DailySalesFor(DateTime getDate)
         {
-            var list = salrepo.GetAll().Where(x => DbFunctions.DiffDays(x.Date, getDate) == 0).ToList();
+            
+            var list = db.Sales.Where(x => DbFunctions.DiffDays(x.Date, getDate) == 0).ToList();
             return PartialView("_DailySalesPartialView", list);
+        }
+
+        public ActionResult MonthlySalesByDate()
+        {
+            int year =Convert.ToInt32( DateTime.Today.ToString("yyyy"));
+            int month = Convert.ToInt32(DateTime.Today.ToString("MM"));
+            int daysInMonth = DateTime.DaysInMonth(year, month);
+            var days = Enumerable.Range(1, daysInMonth);
+            var query = db.Sales.Where(x => x.Date.Year == year && x.Date.Month == month).OrderBy(x => x.Date).Select(g => new
+            {
+                Day = g.Date.Day,
+                Total = g.GrandTotal
+            });
+            var model = new SalesVM
+            {
+                Date = new DateTime(year, month, 1),
+                Days = days.GroupJoin(query, d => d, q => q.Day, (d, q) => new DayTotalVM
+                {
+                    Day = d,
+                    Total = q.Sum(x => x.Total)
+                }).ToList()
+            };
+            return View(model);
+        }
+
+        //Returns Monthly sales based on a parameter
+        [HttpPost]
+        public ActionResult MonthlySalesByDate(string _year, string _month)
+        {
+            //assign incoming values to the variables
+            int year = 0, month = 0;
+            //check if year is null
+            if (string.IsNullOrWhiteSpace(_year) && _month != null)
+            {
+                year = DateTime.Now.Date.Year;
+                month = Convert.ToInt32(_month.Trim());
+            }
+            else
+            {
+                year = Convert.ToInt32(_year.Trim());
+                month = Convert.ToInt32(_month.Trim());
+            }
+            //calculate ttal number of days in a particular month for a that year 
+            int daysInMonth = DateTime.DaysInMonth(year, month);
+            var days = Enumerable.Range(1, daysInMonth);
+            var query = db.Sales.Where(x => x.Date.Year == year && x.Date.Month == month).OrderBy(x => x.Date.Day).Select(g => new
+            {
+                Day = g.Date.Day,
+                Total = g.GrandTotal
+            });
+            var model = new SalesVM
+            {
+                Date = new DateTime(year, month, 1),
+                Days = days.GroupJoin(query, d => d, q => q.Day, (d, q) => new DayTotalVM
+                {
+                    Day = d,
+                    Total = q.Sum(x => x.Total)
+                }).ToList()
+            };
+            return View(model);
+        }
+
+        public ActionResult Purchase()
+        {
+
+            return View(db.Purchases.ToList());
+        }
+
+
+        [HttpPost]
+        public ActionResult Purchase(PurchaseSearchVM vm)
+        {
+            var filter = new PurchaseFilter();
+            var model = filter.FilterPurchase(vm);
+            return View(model.ToList());
         }
 
     }
