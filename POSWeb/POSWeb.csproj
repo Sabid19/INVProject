@@ -246,7 +246,6 @@
     <Content Include="Content\plugins\blueimp\img\video-play.svg" />
     <Content Include="Content\plugins\bootstrap-rtl\bootstrap-rtl.css" />
     <Content Include="Content\plugins\bootstrap-rtl\bootstrap-rtl.min.css" />
-    <Content Include="Content\plugins\chartist\chartist.min.css" />
     <Content Include="Content\plugins\chosen\chosen-sprite%402x.png" />
     <Content Include="Content\plugins\chosen\chosen-sprite.png" />
     <Content Include="Content\plugins\chosen\chosen.css" />
