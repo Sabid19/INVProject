@@ -18,5 +18,6 @@ namespace DataAccess
         public string title { get; set; }
         public string description { get; set; }
         public Nullable<decimal> amount { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     }
 }
