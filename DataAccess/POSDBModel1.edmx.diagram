@@ -40,6 +40,7 @@
         <AssociationConnector Association="ASITPOSDBModel.FK_dbo_SalesItem_dbo_Stock_StockID" ManuallyRouted="false" />
         <AssociationConnector Association="ASITPOSDBModel.FK_SalesReturnDetail_SalesReturn" ManuallyRouted="false" />
         <AssociationConnector Association="ASITPOSDBModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ASITPOSDBModel.Expense" Width="1.5" PointX="12.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
