@@ -31,6 +31,7 @@ namespace DataAccess
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Catagory> Catagories { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
         public virtual DbSet<GenericName> GenericNames { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
@@ -45,6 +46,5 @@ namespace DataAccess
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
-        public virtual DbSet<Expense> Expenses { get; set; }
     }
 }

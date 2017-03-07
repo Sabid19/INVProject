@@ -79,10 +79,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="200" />
-          <Property Name="description" Type="nvarchar(max)" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="6" />
-          <Property Name="date" Type="smalldatetime" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="Referance" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" />
         </EntityType>
         <EntityType Name="GenericName">
           <Key>
@@ -617,6 +618,17 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="CDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="Self.FK_Item_Catagory" FromRole="Catagory" ToRole="Item" />
         </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Referance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="6" />
+        </EntityType>
         <EntityType Name="GenericName">
           <Key>
             <PropertyRef Name="ID" />
@@ -987,6 +999,7 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Catagories" EntityType="Self.Catagory" />
+          <EntitySet Name="Expenses" EntityType="Self.Expense" />
           <EntitySet Name="GenericNames" EntityType="Self.GenericName" />
           <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
@@ -1061,18 +1074,7 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Expenses" EntityType="ASITPOSDBModel.Expense" />
         </EntityContainer>
-        <EntityType Name="Expense">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="amount" Type="Decimal" Precision="18" Scale="6" />
-          <Property Name="date" Type="DateTime" Precision="0" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1140,6 +1142,18 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
                 <ScalarProperty Name="CatagoryId" ColumnName="CatagoryId" />
                 <ScalarProperty Name="CatagoryName" ColumnName="CatagoryName" />
                 <ScalarProperty Name="CDescription" ColumnName="CDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="ASITPOSDBModel.Expense">
+              <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Referance" ColumnName="Referance" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1329,17 +1343,6 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="ASITPOSDBModel.Expense">
-              <MappingFragment StoreEntitySet="Expense">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

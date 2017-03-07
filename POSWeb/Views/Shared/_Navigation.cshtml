@@ -65,8 +65,21 @@
                     <li class="@Html.IsSelected(action: "Dashboard_4_1")"><a href="@Url.Action("Dashboard_4_1", "Dashboards")">Yearly Sales</a></li>
                     <li class="@Html.IsSelected(action: "Dashboard_5")"><a href="@Url.Action("Purchase", "Report")">Purchase Report</a></li>
                 </ul>
-            </li>  
+            </li> 
+            
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-edit"></i> <span>Accounts</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="~/Expense/Index"><i class="fa fa-circle-o"></i> Expense </a></li>
+                    <li><a href="~/Reports/DailySales"><i class="fa fa-circle-o"></i> Profit &Aacute; Loss</a></li>
+                </ul>
+            </li> 
             
         </ul>
+
     </div>
 </nav>

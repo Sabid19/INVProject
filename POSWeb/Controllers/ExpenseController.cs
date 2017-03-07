@@ -14,8 +14,26 @@ namespace POSWeb.Controllers
         // GET: Expense
         public ActionResult Index()
         {
-           var exolst= exprepo.GetAll().ToList();
+           var exolst = exprepo.GetAll().ToList();
             return View(exolst);
+        }
+
+        [HttpGet]
+        public  ActionResult Create()
+        {
+            return View();
+        }   
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public  ActionResult Create(Expense exp)
+        {
+            if (ModelState.IsValid)
+            {
+                exprepo.Add(exp);
+                return RedirectToAction("Index");
+            }
+            return View(exp);
         }
     }
 }
