@@ -45,5 +45,6 @@ namespace DataAccess
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
     }
 }

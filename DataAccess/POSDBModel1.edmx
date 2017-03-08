@@ -82,6 +82,7 @@
           <Property Name="title" Type="nvarchar" MaxLength="200" />
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="amount" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="date" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="GenericName">
           <Key>
@@ -1070,6 +1071,7 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="date" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1330,6 +1332,7 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <EntitySetMapping Name="Expenses">
             <EntityTypeMapping TypeName="ASITPOSDBModel.Expense">
               <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="title" ColumnName="title" />
