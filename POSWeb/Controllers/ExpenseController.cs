@@ -14,6 +14,8 @@ namespace POSWeb.Controllers
         // GET: Expense
         public ActionResult Index()
         {
+            ASITPOSDBEntities db = new ASITPOSDBEntities();
+            var pro = db.Profitandloss(DateTime.Parse("08-Feb-2017"),DateTime.Parse("28-Feb-2017")).ToList();
            var exolst = exprepo.GetAll().ToList();
             return View(exolst);
         }
@@ -35,5 +37,25 @@ namespace POSWeb.Controllers
             }
             return View(exp);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var exp = exprepo.GetById(id);
+            return View(exp);
+        }
+        [HttpPost]
+        public ActionResult Edit(Expense expn)
+        {
+            if (ModelState.IsValid)
+            {
+                var org = exprepo.GetById(expn.ID);
+                exprepo.Update(org, expn);
+
+                return RedirectToAction("Index");
+            }        
+             
+            return View(expn);
+        }
+
     }
 }

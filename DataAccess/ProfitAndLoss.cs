@@ -10,15 +10,8 @@
 namespace DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Expense
+    public partial class ProfitAndLoss
     {
-        public int ID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public string Referance { get; set; }
-        public Nullable<decimal> Amount { get; set; }
     }
 }

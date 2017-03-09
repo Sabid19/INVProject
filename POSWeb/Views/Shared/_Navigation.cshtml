@@ -73,9 +73,9 @@
                     <i class="fa fa-edit"></i> <span>Accounts</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="~/Expense/Index"><i class="fa fa-circle-o"></i> Expense </a></li>
-                    <li><a href="~/Reports/DailySales"><i class="fa fa-circle-o"></i> Profit &Aacute; Loss</a></li>
+                <ul class="nav nav-second-level collapse">
+                    <li class="@Html.IsSelected(action: "Dashboard_2")"><a href="@Url.Action("Index", "Expense")">Expense</a></li>
+                    <li class="@Html.IsSelected(action: "Dashboard_2")"><a href="@Url.Action("Index", "Expense")">Profit &Aacute; Loss</a></li>                   
                 </ul>
             </li> 
             

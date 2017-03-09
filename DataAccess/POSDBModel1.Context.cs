@@ -12,6 +12,8 @@ namespace DataAccess
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ASITPOSDBEntities : DbContext
     {
@@ -46,5 +48,18 @@ namespace DataAccess
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
+    
+        public virtual ObjectResult<ProfitAndLoss> Profitandloss(Nullable<System.DateTime> date1, Nullable<System.DateTime> date2)
+        {
+            var date1Parameter = date1.HasValue ?
+                new ObjectParameter("Date1", date1) :
+                new ObjectParameter("Date1", typeof(System.DateTime));
+    
+            var date2Parameter = date2.HasValue ?
+                new ObjectParameter("Date2", date2) :
+                new ObjectParameter("Date2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLoss>("Profitandloss", date1Parameter, date2Parameter);
+        }
     }
 }

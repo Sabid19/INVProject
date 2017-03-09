@@ -81,9 +81,9 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="200" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" />
           <Property Name="Date" Type="smalldatetime" />
           <Property Name="Referance" Type="nvarchar(max)" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" />
         </EntityType>
         <EntityType Name="GenericName">
           <Key>
@@ -451,6 +451,10 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Profitandloss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date1" Type="smalldatetime" Mode="In" />
+          <Parameter Name="Date2" Type="smalldatetime" Mode="In" />
+        </Function>
         <EntityContainer Name="ASITPOSDBModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -1074,7 +1078,13 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <FunctionImport Name="Profitandloss" ReturnType="Collection(ASITPOSDBModel.ProfitAndLoss)" >
+            <Parameter Name="Date1" Mode="In" Type="DateTime" />
+            <Parameter Name="Date2" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ProfitAndLoss" >
+          </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1343,6 +1353,11 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Profitandloss" FunctionName="ASITPOSDBModel.Store.Profitandloss" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ASITPOSDBModel.ProfitAndLoss" />
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

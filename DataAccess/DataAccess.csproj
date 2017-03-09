@@ -105,6 +105,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>POSDBModel1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ProfitAndLoss.cs">
+      <DependentUpon>POSDBModel1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase.cs">
       <DependentUpon>POSDBModel1.tt</DependentUpon>
