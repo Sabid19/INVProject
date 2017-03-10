@@ -1,0 +1,107 @@
+﻿@model POSWeb.ViewModel.Report.VmProfitLoss
+@{
+    ViewBag.Title = "ProfitAndLoss";
+    Layout = "~/Views/Shared/_layout1.cshtml";
+}
+
+<div class="box box-body  box-primary">
+    <form id="form1" method="post" action="ProfitAndLoss">
+        <label>From Date: </label>
+        <input type="text" name="FrmDate" class="datepicker" />
+        <label>To Date: </label>
+        <input type="text" name="ToDate" class="datepicker" />
+        <input type="submit" class="btn btn-primary" value="Ok" id="submit" />
+    </form>
+</div>
+
+@*<div id="renderTable" class="box box-body box-default">*@
+    <div class="box box-body">
+        <table class="table table-striped" id="datatable">
+            <thead>
+                <tr class="dataTableHead">
+                    <th>Title</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+           <tr>
+               <td>Cost of good </td>
+               <td>@Model.Costofgood</td>
+           </tr>
+            <tr>
+                <td>Total sale </td>
+                <td>@Model.totalsale</td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="pull-right">Gross Profit :</h4>
+                </td>
+                <td>
+                    <h4>@Model.grossprofit</h4>
+                </td>
+            </tr>
+        
+                            
+            @*<tfoot class="dataTableHead">
+                <tr>
+                    <td>
+                        <h4 class="pull-right">Gross Profit :</h4>
+                    </td>
+                    <td>
+                        <h4>@Model.grossprofit</h4>
+                    </td>
+                </tr>
+            </tfoot>*@
+        @*</table>*@
+            <tr>
+                <td>
+                    <h3 class="pull-left">Other Expense</h3>
+                </td>
+                <td></td>
+            </tr>
+        
+        @*<table class="table table-striped" id="datatable">*@
+            @foreach (var item in Model.expences)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Amount</td>
+                </tr>
+            }            
+            <tfoot class="dataTableHead">
+                <tr>
+                    <td>
+                        <h4 class="pull-right">Total :</h4>
+                    </td>
+                    <td>
+                        <h4>@Model.expences.Sum(x => x.Amount)</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 class="pull-right">Net Income :</h3>
+                    </td>
+                    <td>
+                      @{var ex = Model.grossprofit -@Model.expences.Sum(x => x.Amount);}
+                        <h3>@ex</h3>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+@*</div>*@
+
+<!--      Scripts / Styles     -->
+<script>
+    $('.datepicker').datepicker();
+    $(document).ready(function () {
+        //$('#submit').on('click', function () {
+        //    $('#renderTable').load("ProfitAndLoss", $('#form1').serialize());
+        //});
+    });
+
+</script>
+<style>
+    #renderTable {
+        background-color: white;
+    }
+</style>

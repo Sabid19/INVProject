@@ -13,10 +13,8 @@ namespace POSWeb.Controllers
         Repository<Expense> exprepo = new Repository<Expense>();
         // GET: Expense
         public ActionResult Index()
-        {
-            ASITPOSDBEntities db = new ASITPOSDBEntities();
-            var pro = db.Profitandloss(DateTime.Parse("08-Feb-2017"),DateTime.Parse("28-Feb-2017")).ToList();
-           var exolst = exprepo.GetAll().ToList();
+        {         
+            var exolst = exprepo.GetAll().ToList();
             return View(exolst);
         }
 

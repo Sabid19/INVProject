@@ -119,6 +119,34 @@ namespace POSWeb.Controllers
             var model = filter.FilterPurchase(vm);
             return View(model.ToList());
         }
+        [HttpGet]
+        public ActionResult ProfitAndLoss()
+        {
+            List<Expense> exp = new List<Expense>();
+            VmProfitLoss VMP = new VmProfitLoss();
+            VMP.expences = exp;
+            return View(VMP);
+        }
+
+        [HttpPost]
+        public ActionResult ProfitAndLoss(DateTime FrmDate, DateTime ToDate)
+        {
+            ASITPOSDBEntities db = new ASITPOSDBEntities();
+            List<ProfitAndLoss> prf = new List<ProfitAndLoss>();
+            var pro = db.Profitandloss(FrmDate, ToDate);
+            foreach (var item in pro)
+            {
+                prf.Add(item);
+            }
+            var exp = db.Expenses.Where(x => x.Date >= FrmDate && x.Date <= ToDate).ToList();
+
+            VmProfitLoss VMP = new VmProfitLoss();
+            VMP.Costofgood = prf[0].Costofgood;
+            VMP.grossprofit = prf[0].grossprofit;
+            VMP.totalsale = prf[0].totalsale;
+            VMP.expences= exp;
+            return View(VMP);
+        }
 
     }
 }

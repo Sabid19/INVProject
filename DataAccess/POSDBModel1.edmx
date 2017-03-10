@@ -1084,7 +1084,10 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ProfitAndLoss" >
-          </ComplexType>
+          <Property Type="Decimal" Name="Costofgood" Nullable="false" />
+          <Property Type="Decimal" Name="grossprofit" Nullable="false" />
+          <Property Type="Decimal" Name="totalsale" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

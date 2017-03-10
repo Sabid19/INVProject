@@ -411,6 +411,8 @@ namespace POSWeb
             bundles.Add(new ScriptBundle("~/plugins/markdown").Include(
                       "~/Scripts/plugins/bootstrap-markdown/bootstrap-markdown.js",
                       "~/Scripts/plugins/bootstrap-markdown/markdown.js"));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

@@ -13,5 +13,8 @@ namespace DataAccess
     
     public partial class ProfitAndLoss
     {
+        public decimal Costofgood { get; set; }
+        public decimal grossprofit { get; set; }
+        public decimal totalsale { get; set; }
     }
 }
