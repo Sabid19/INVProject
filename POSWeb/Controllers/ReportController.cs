@@ -148,5 +148,92 @@ namespace POSWeb.Controllers
             return View(VMP);
         }
 
+        [HttpGet]
+        public ActionResult YearlySalesByMonth()
+        {
+            List<MonthTotalVM> _Model = new List<MonthTotalVM>();
+            return View(_Model);
+        }
+
+        [HttpPost]
+        public ActionResult YearlySalesByMonth(string year)
+        {
+            int _year = 0;
+            int _toYear = 0;
+            if (string.IsNullOrWhiteSpace(year))
+            {
+                _year = DateTime.Now.Year;
+                _toYear = _year + 1;
+            }
+            else
+            {
+                _year = Convert.ToInt32(year);
+                _toYear = _year + 1;
+            }
+
+            //    int _year = DateTime.Now.Year;
+            //    int _toYear = _year + 1;
+            var query = db.Sales.Where(s => (s.Date.Year >= _year && s.Date.Year < _toYear));
+            // YearlyReportVM _Model = new YearlyReportVM();
+            List<MonthTotalVM> _Model = new List<MonthTotalVM>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                decimal _grandTotal = 0;
+                decimal temp = 0;
+                temp = query.Where(x => x.Date.Month == i).Sum(x => (decimal?)(x.GrandTotal)) ?? 0;
+
+                _grandTotal = temp;
+
+                MonthTotalVM model = new MonthTotalVM()
+                {
+                    Year = _year,
+                    Month = i,
+                    GrandTotal = _grandTotal
+                };
+                _Model.Add(model);
+            }
+
+            return View(_Model.ToList());
+        }
+
+
+        public List<MonthTotalVM> YearlySalesByMonth_forCharts(string year)
+        {
+            int _year = 0;
+            int _toYear = 0;
+            if (string.IsNullOrWhiteSpace(year))
+            {
+                _year = DateTime.Now.Year;
+                _toYear = _year + 1;
+            }
+            else
+            {
+                _year = Convert.ToInt32(year);
+                _toYear = _year + 1;
+            }
+
+            var query = db.Sales.Where(s => (s.Date.Year >= _year && s.Date.Year < _toYear));
+            List<MonthTotalVM> _Model = new List<MonthTotalVM>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                decimal _grandTotal = 0;
+                decimal temp = 0;
+                temp = query.Where(x => x.Date.Month == i).Sum(x => (decimal?)(x.GrandTotal)) ?? 0;
+
+                _grandTotal = temp;
+
+                MonthTotalVM model = new MonthTotalVM()
+                {
+                    Year = _year,
+                    Month = i,
+                    GrandTotal = _grandTotal
+                };
+                _Model.Add(model);
+            }
+            return _Model.ToList();
+        }
+
     }
 }

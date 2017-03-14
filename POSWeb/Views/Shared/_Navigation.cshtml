@@ -59,11 +59,11 @@
             <li class="@Html.IsSelected(controller: "Report")">
                 <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-edit"></i> <span class="nav-label" data-i18n="nav.dashboard">REPORTS</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Report", cssClass: "in")">
-                    <li class="@Html.IsSelected(action: "Dashboard_2")"><a href="@Url.Action("Index", "Report")">Stock</a></li>
-                    <li class="@Html.IsSelected(action: "Dashboard_2")"><a href="@Url.Action("DailySales", "Report")">Daily Sales</a></li>
-                    <li class="@Html.IsSelected(action: "Dashboard_3")"><a href="@Url.Action("MonthlySalesByDate", "Report")">Monthly Sales</a></li>
-                    <li class="@Html.IsSelected(action: "Dashboard_4_1")"><a href="@Url.Action("Dashboard_4_1", "Dashboards")">Yearly Sales</a></li>
-                    <li class="@Html.IsSelected(action: "Dashboard_5")"><a href="@Url.Action("Purchase", "Report")">Purchase Report</a></li>
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Report")">Stock</a></li>
+                    <li class="@Html.IsSelected(action: "DailySales")"><a href="@Url.Action("DailySales", "Report")">Daily Sales</a></li>
+                    <li class="@Html.IsSelected(action: "MonthlySalesByDate")"><a href="@Url.Action("MonthlySalesByDate", "Report")">Monthly Sales</a></li>
+                    <li class="@Html.IsSelected(action: "YearlySalesByMonth")"><a href="@Url.Action("YearlySalesByMonth", "Report")">Yearly Sales</a></li>
+                    <li class="@Html.IsSelected(action: "Purchase")"><a href="@Url.Action("Purchase", "Report")">Purchase Report</a></li>
                 </ul>
             </li> 
             
