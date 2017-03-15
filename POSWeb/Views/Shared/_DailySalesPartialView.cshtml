@@ -83,13 +83,7 @@
 </table>
 
 
-@section Styles {
-    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
-}
 
-@section Scripts {
-    @Scripts.Render("~/plugins/jeditable")
-    @Scripts.Render("~/plugins/dataTables")
 
 <script>
     $(document).ready(function () {
@@ -122,4 +116,3 @@
         $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
     });
 </script>
-}
