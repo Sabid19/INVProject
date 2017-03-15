@@ -40,10 +40,10 @@
         
     </form>
 </div>
-<div class="box box-body">
+<div class="box box-body box-danger">
     <table class="table table-striped" id="datatable">
         <thead>
-            <tr class="dataTableHead">
+            <tr style="background-color:#337ab7; color:white">
                 <th>Day</th>
                 <th>Amount</th>
             </tr>
@@ -90,13 +90,13 @@
     </table>
 </div>
 <script src="~/Scripts/MyJs/my.js"></script>
-@section Styles {
+@*@section Styles {
     @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
 }
 
 @section Scripts {
     @Scripts.Render("~/plugins/jeditable")
-    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/dataTables")*@
 <script>
     $(document).ready(function () {
         $('table tr').each(function () {
@@ -112,31 +112,31 @@
             "filter":false
         });
 
-        var tableTools = new $.fn.dataTable.TableTools(table, {
-            'aButtons': [
-                {
-                    'sExtends': 'xls',
-                    'sButtonText': 'Save to Excel',
-                    'sFileName': 'DailySales.xls'
-                },
-                {
-                    'sExtends': 'print',
-                    'bShowAll': true,
-                },
-                {
-                    'sExtends': 'pdf',
-                    'bFooter': true,
-                    'bShowAll': true,
-                    'sPdfMessage': 'Your custom message would go here.'
-                },
-                'copy'
-            ],
-            'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
-        });
+        //var tableTools = new $.fn.dataTable.TableTools(table, {
+        //    'aButtons': [
+        //        {
+        //            'sExtends': 'xls',
+        //            'sButtonText': 'Save to Excel',
+        //            'sFileName': 'DailySales.xls'
+        //        },
+        //        {
+        //            'sExtends': 'print',
+        //            'bShowAll': true,
+        //        },
+        //        {
+        //            'sExtends': 'pdf',
+        //            'bFooter': true,
+        //            'bShowAll': true,
+        //            'sPdfMessage': 'Your custom message would go here.'
+        //        },
+        //        'copy'
+        //    ],
+        //    'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+        //});
 
-        $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+        //$(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
 
     });
 
 </script>
-    }
+    @*}*@

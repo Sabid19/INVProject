@@ -4,7 +4,7 @@
 
 <table class="table datatable table-striped" id="datatable">
     <thead>
-        <tr class="dataTableHead">
+        <tr style="background-color:#337ab7; color:white">
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
@@ -35,13 +35,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @item.Date.ToString("dd-MMM-yyyy")
+               @* @Html.DisplayFor(modelItem => item.Date.ToString("dd-MMM-yyyy"))*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Amount)
+                @item.Amount.ToString("#,##0.00")
+                @*@Html.DisplayFor(modelItem => item.Amount.ToString("0#,##.00"))*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Discount)
@@ -55,7 +57,8 @@
                 @Html.DisplayFor(modelItem => item.Tax)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GrandTotal)
+                @item.GrandTotal.ToString("#,##0.00")
+                @*@Html.DisplayFor(modelItem => item.GrandTotal.ToString("#,##0.00"))*@
 
                 @{GrandTtl += (decimal)item.GrandTotal;}
             </td>
@@ -76,7 +79,7 @@
             <td></td>
             <td></td>
             <td><b>Grand Total : </b></td>
-            <td><strong>@GrandTtl</strong> </td>
+            <td><strong>@GrandTtl.ToString("#,##0.00")</strong> </td>
             <td></td>
     </tr>
 </tfoot>
@@ -90,29 +93,20 @@
         var table = $('#datatable').dataTable({
             "paging": false,
             "info": true,
-            "filter":false
+            "filter": false,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                    columns: ':contains("Office")'
+                    }
+                },
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
         });
-        var tableTools = new $.fn.dataTable.TableTools(table, {
-            'aButtons': [
-                {
-                    'sExtends': 'xls',
-                    'sButtonText': 'Save to Excel',
-                    'sFileName': 'DailySales.xls'
-                },
-                {
-                    'sExtends': 'print',
-                    'bShowAll': true,
-                },
-                {
-                    'sExtends': 'pdf',
-                    'bFooter': true,
-                    'bShowAll': true,
-                    'sPdfMessage': 'Your custom message would go here.'
-                },
-                'copy'
-            ],
-            'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
-        });
-        $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+
     });
 </script>
