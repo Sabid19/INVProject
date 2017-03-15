@@ -12,6 +12,7 @@ namespace POSWeb.Controllers.Inventory
     {
         Repository<Item> rep = new Repository<Item>();
         Repository<Catagory> catRep = new Repository<Catagory>();
+        Repository<Manufacturer> mnuRep = new Repository<Manufacturer>();
         // GET: Item
         public ActionResult Index()
         {
@@ -36,7 +37,7 @@ namespace POSWeb.Controllers.Inventory
         public ActionResult Create()
         {
              ViewBag.CategeoryID = new SelectList(catRep.GetAll(), "CatagoryId", "CatagoryName");
-            //  ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ID", "ManufacturerName");
+             ViewBag.ManufacturerID = new SelectList(mnuRep.GetAll(), "ID", "ManufacturerName");
             return View();
         }
 
@@ -53,7 +54,7 @@ namespace POSWeb.Controllers.Inventory
                     ViewBag.DuplicateError = "Item already exists!!";
                     ViewBag.CategeoryID = new SelectList(catRep.GetAll(), "CatagoryId", "CatagoryName");
                     //  ViewBag.DrugGenericNameID = new SelectList(db.DrugGenericNames, "ID", "GenericName", item.DrugGenericNameID);
-                    //   ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ID", "ManufacturerName", item.ManufacturerID);
+                       ViewBag.ManufacturerID = new SelectList(mnuRep.GetAll(), "ID", "ManufacturerName", item.ManufacturerID);
                     return View(item);
                 }
                 else
@@ -66,7 +67,7 @@ namespace POSWeb.Controllers.Inventory
             }
             ViewBag.CategeoryID = new SelectList(catRep.GetAll(), "CatagoryId", "CatagoryName");
             // ViewBag.DrugGenericNameID = new SelectList(db.DrugGenericNames, "ID", "GenericName", item.DrugGenericNameID);
-            // ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ID", "ManufacturerName", item.ManufacturerID);
+             ViewBag.ManufacturerID = new SelectList(mnuRep.GetAll(), "ID", "ManufacturerName", item.ManufacturerID);
             return View(item);
         }
 
@@ -84,7 +85,7 @@ namespace POSWeb.Controllers.Inventory
             }
             ViewBag.CategeoryID = new SelectList(catRep.GetAll(), "CatagoryId", "CatagoryName");
             // ViewBag.DrugGenericNameID = new SelectList(db.DrugGenericNames, "ID", "GenericName", item.DrugGenericNameID);
-            //  ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ID", "ManufacturerName", item.ManufacturerID);
+              ViewBag.ManufacturerID = new SelectList(mnuRep.GetAll(), "ID", "ManufacturerName", item.ManufacturerID);
             return View(item);
         }
 
@@ -112,7 +113,7 @@ namespace POSWeb.Controllers.Inventory
             }
             ViewBag.CategeoryID = new SelectList(catRep.GetAll(), "CatagoryId", "CatagoryName");
             // ViewBag.DrugGenericNameID = new SelectList(db.DrugGenericNames, "ID", "GenericName", item.DrugGenericNameID);
-            // ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ID", "ManufacturerName", item.ManufacturerID);
+             ViewBag.ManufacturerID = new SelectList(mnuRep.GetAll(), "ID", "ManufacturerName", item.ManufacturerID);
             return View(item);
         }
 

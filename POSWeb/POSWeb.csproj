@@ -486,6 +486,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Inventory\CategoryController.cs" />
     <Compile Include="Controllers\Inventory\ItemController.cs" />
+    <Compile Include="Controllers\Inventory\ManufacturerController.cs" />
     <Compile Include="Controllers\Inventory\StockController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\Purchase\Purchase1Controller.cs" />
@@ -596,6 +597,9 @@
     <Content Include="Views\Report\ProfitAndLoss.cshtml" />
     <Content Include="Views\Report\YearlySalesByMonth_forCharts.cshtml" />
     <Content Include="Views\Report\YearlySalesByMonth.cshtml" />
+    <Content Include="Views\Manufacturer\Index.cshtml" />
+    <Content Include="Views\Manufacturer\Create.cshtml" />
+    <Content Include="Views\Manufacturer\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

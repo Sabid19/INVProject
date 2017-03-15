@@ -18,6 +18,9 @@
                     Name
                 </th>
                 <th>
+                    Manufacturar
+                </th>
+                <th>
                     BarCode
                 </th>
                 <th>
@@ -41,6 +44,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.BarCode)
