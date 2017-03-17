@@ -70,10 +70,10 @@
             </li>*@
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    <i class="fa fa-bell"></i>  <span class="label label-primary"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
+                <ul class="dropdown-menu dropdown-alerts menu">
+                    @*<li>
                         <a href="#">
                             <div>
                                 <i class="fa fa-envelope fa-fw"></i> You have 16 messages
@@ -99,7 +99,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="divider"></li>
+                    <li class="divider"></li>*@
                     <li>
                         <div class="text-center link-block">
                             <a href="@Url.Action("Notifications", "Home")">
@@ -127,3 +127,38 @@
         </ul>
     </nav>
 </div>
+
+<script>
+    var count = 0, count2 = 0, total = 0;
+    $(document).ready(function () {
+
+        $.get('../../../Home/CheckExpiry', null, function (data) {
+            //$('.label-warning').html(data);
+            $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items to expire/expired.</a></li>');
+
+            if (data != null)
+            {
+                $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
+            }
+            else {
+                $('.alertNumber').append('<span class="label label-warning notifications">0</span>');
+            }
+
+            count = data;
+        }, 'json');
+
+        $.get('../../../Home/StockLevel', null, function (data) {
+            //$('.label-danger').html(data);
+            $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items are low in qty.</a></li>');
+
+                if (data != null) {
+                    $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
+                }
+                else {
+                    $('.alertNumber').append('<span class="label label-warning notifications">0</span>');
+                }
+        }, 'json');
+    });
+
+   // <li><a href="#"><i class="fa fa-users text-aqua"></i> 5 new members joined today</a></li>
+</script>

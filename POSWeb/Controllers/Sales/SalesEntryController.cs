@@ -64,6 +64,7 @@ namespace POSWeb.Controllers.Sales
         //Generates Sales Invoice
         public ActionResult SalesInvoice(int? id)
         {
+            ASITPOSDBEntities db = new ASITPOSDBEntities();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,21 +79,49 @@ namespace POSWeb.Controllers.Sales
             else
             {
                 var salitm = new List<SalesInvRpt>();
-                foreach (var item in _sales.SalesItems)
-                {
-                    var sal = new SalesInvRpt { ID = item.ID, Amount = item.Amount, Qty = item.Qty, Rate = item.Rate, SalesID = item.SalesID, StockID = item.StockID };
-                    salitm.Add(sal);
-                }
-               
+                //foreach (var item in _sales.SalesItems)
+                //{
+                //    var sal = new SalesInvRpt {
+                //        ID = item.ID,
+                //        Amount = item.Amount,
+
+                //        Qty = item.Qty,
+                //        Rate = item.Rate,
+                //        SalesID = item.SalesID,
+                //        StockID = item.StockID };
+                //    salitm.Add(sal);
+                //}
+
+                salitm = (from sitem in _sales.SalesItems
+                              join stocks in db.Stocks on sitem.StockID equals stocks.ID
+                              join item in db.Items on stocks.ItemID equals item.ItemID into subtbl
+                              from sub2 in subtbl.DefaultIfEmpty()
+                              select new SalesInvRpt() { ID = sitem.ID, Amount = sitem.Amount,Qty= sitem.Qty, Rate = sitem.Rate,Proname= sub2.Name, SalesID = sitem.SalesID, StockID = sitem.StockID }).ToList();
+
+
+                //var query = from person in people
+                //            join pet in pets on person equals pet.Owner into gj
+                //            from subpet in gj.DefaultIfEmpty()
+                //            select new { person.FirstName, PetName = (subpet == null ? String.Empty : subpet.Name) };
+
 
                 LocalReport rpt = new LocalReport();
                 rpt = RptSetupClass.GetLocalReport("Sales.POSSalesInv01", salitm, null,null);
                 RptRDLCPDF(rpt);
 
-                return View(_sales);
+                return View();
             }
 
         }
+
+        //public FileContentResult File(int? id)
+        //{
+        //    var fullPathToFile = @"Some\Path\To\file.pdf";
+        //    var mimeType = "application/pdf";
+        //    var fileContents = System.IO.File.ReadAllBytes(fullPathToFile);
+
+        //    return new FileContentResult(fileContents, MimeTypes.Pdf);
+        //}
 
         protected void RptRDLCPDF(LocalReport rpt)
         {

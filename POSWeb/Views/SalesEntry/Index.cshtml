@@ -415,7 +415,7 @@
                 Discount: $('#discountAmount').val(),
                 GrandTotal: $('#grandTotal').val()
             }
-            alert(dataToPost);
+            //alert(dataToPost);
             //post form
             var form = $("#formSerialized").serialize();
             $.ajax({
@@ -431,7 +431,9 @@
                     }
                     else {
                         closeModal();
-                        window.location.href = "../../../SalesEntry/SalesInvoice/" + data;
+                       
+                        window.location.href = '@Url.Action("SalesInvoice", "SalesEntry")' + "?id=" + data;
+                       // window.location.href = "../../../SalesEntry/SalesInvoice/" + data;
                     }
                 }
             });

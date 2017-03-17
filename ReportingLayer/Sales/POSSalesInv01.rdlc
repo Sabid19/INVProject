@@ -67,7 +67,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!StockID.Value</Value>
+                              <Value>=Fields!Proname.Value</Value>
                               <Style>
                                 <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -872,7 +872,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox13</rd:DefaultName>
-            <Top>0.27552in</Top>
+            <Top>0.33802in</Top>
             <Left>0.02301in</Left>
             <Height>0.13541in</Height>
             <Width>2.89618in</Width>
@@ -884,7 +884,7 @@
             </Style>
           </Textbox>
           <Line Name="Line3">
-            <Top>0.27552in</Top>
+            <Top>0.33802in</Top>
             <Left>0.01723in</Left>
             <Height>0in</Height>
             <Width>2.91347in</Width>
@@ -899,7 +899,7 @@
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>1.58333in</Top>
-        <Height>0.47395in</Height>
+        <Height>0.6302in</Height>
         <Width>2.9307in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -943,7 +943,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.09895in</Height>
+    <Height>2.23437in</Height>
     <Style />
   </Body>
   <Width>2.9307in</Width>
@@ -1323,11 +1323,18 @@
       </ConnectionProperties>
       <rd:DataSourceID>891930d7-5470-427d-b586-02b10eb3a7c9</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="BusinessEntityLSales1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>4a91eb6f-aa02-4b0f-8fc2-7eac3f96e12b</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>BusinessEntityLSales</DataSourceName>
+        <DataSourceName>BusinessEntityLSales1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -1338,6 +1345,10 @@
         <Field Name="ID">
           <DataField>ID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Proname">
+          <DataField>Proname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Qty">
           <DataField>Qty</DataField>
