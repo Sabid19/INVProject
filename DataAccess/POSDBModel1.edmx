@@ -65,6 +65,10 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ComCod" Type="nvarchar(max)" />
+          <Property Name="ContactNo" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Catagory">
           <Key>
@@ -142,10 +146,10 @@
           <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Tax" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="IsPaid" Type="bit" Nullable="false" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="Description" Type="nvarchar(max)" />
@@ -160,8 +164,8 @@
           <Property Name="Batch" Type="nvarchar(max)" />
           <Property Name="Qty" Type="int" Nullable="false" />
           <Property Name="BonusIncluded" Type="int" />
-          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="Expiry" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Sales">
@@ -170,10 +174,10 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Tax" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="SaleUser" Type="nvarchar(max)" />
           <Property Name="Remarks" Type="nvarchar(max)" />
         </EntityType>
@@ -185,8 +189,8 @@
           <Property Name="StockID" Type="int" Nullable="false" />
           <Property Name="SalesID" Type="int" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
-          <Property Name="Rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
         </EntityType>
         <EntityType Name="SalesReturn">
           <Key>
@@ -194,9 +198,9 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SalesID" Type="int" />
-          <Property Name="Subtotal" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="Discount" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="NetTotal" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Subtotal" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="NetTotal" Type="decimal" Precision="18" Scale="6" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="ReturnedDate" Type="datetime" />
         </EntityType>
@@ -209,8 +213,8 @@
           <Property Name="StockID" Type="int" />
           <Property Name="BatchNo" Type="nvarchar" MaxLength="50" />
           <Property Name="Qty" Type="int" />
-          <Property Name="Rate" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -220,8 +224,8 @@
           <Property Name="ItemID" Type="int" Nullable="false" />
           <Property Name="BatchNo" Type="nvarchar" MaxLength="20" />
           <Property Name="Qty" Type="int" Nullable="false" />
-          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="ManufacturedDate" Type="datetime" />
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="InitialQty" Type="int" Nullable="false" />
@@ -612,6 +616,10 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="ComCod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Catagory">
           <Key>
@@ -698,10 +706,10 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SupplierID" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Tax" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -718,8 +726,8 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="Batch" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="BonusIncluded" Type="Int32" />
-          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="Expiry" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Item" Relationship="Self.FK_dbo_PurchaseItem_dbo_Item_ItemID" FromRole="PurchaseItem" ToRole="Item" />
           <NavigationProperty Name="Purchase" Relationship="Self.FK_dbo_PurchaseItem_dbo_Purchase_PurchaseID" FromRole="PurchaseItem" ToRole="Purchase" />
@@ -730,10 +738,10 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Tax" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="SaleUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SalesItems" Relationship="Self.FK_dbo_SalesItem_dbo_Sales_SalesID" FromRole="Sales" ToRole="SalesItem" />
@@ -747,8 +755,8 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="StockID" Type="Int32" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
-          <Property Name="Rate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
           <NavigationProperty Name="Sale" Relationship="Self.FK_dbo_SalesItem_dbo_Sales_SalesID" FromRole="SalesItem" ToRole="Sales" />
           <NavigationProperty Name="Stock" Relationship="Self.FK_dbo_SalesItem_dbo_Stock_StockID" FromRole="SalesItem" ToRole="Stock" />
         </EntityType>
@@ -758,9 +766,9 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SalesID" Type="Int32" />
-          <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="NetTotal" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="NetTotal" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReturnedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Sale" Relationship="Self.FK_SalesReturn_Sales" FromRole="SalesReturn" ToRole="Sales" />
@@ -775,8 +783,8 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="StockID" Type="Int32" />
           <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
-          <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="6" />
           <NavigationProperty Name="SalesReturn" Relationship="Self.FK_SalesReturnDetail_SalesReturn" FromRole="SalesReturnDetail" ToRole="SalesReturn" />
         </EntityType>
         <EntityType Name="Stock">
@@ -787,8 +795,8 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <Property Name="ItemID" Type="Int32" Nullable="false" />
           <Property Name="BatchNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
-          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="ManufacturedDate" Type="DateTime" Precision="3" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
           <Property Name="InitialQty" Type="Int32" Nullable="false" />
@@ -1134,6 +1142,10 @@ warning 6002: The table/view 'ASITPOSDB.dbo.UserInfo' does not have a primary ke
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="ASITPOSDBModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ComCod" ColumnName="ComCod" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />

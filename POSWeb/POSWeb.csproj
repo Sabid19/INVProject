@@ -504,6 +504,10 @@
     <Compile Include="Migrations\201702210029066_InitialIdentityModles.Designer.cs">
       <DependentUpon>201702210029066_InitialIdentityModles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703200918386_initialidentitymodels.cs" />
+    <Compile Include="Migrations\201703200918386_initialidentitymodels.Designer.cs">
+      <DependentUpon>201703200918386_initialidentitymodels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
     <Compile Include="Models\GetParames.cs" />
@@ -638,6 +642,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702210029066_InitialIdentityModles.resx">
       <DependentUpon>201702210029066_InitialIdentityModles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703200918386_initialidentitymodels.resx">
+      <DependentUpon>201703200918386_initialidentitymodels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

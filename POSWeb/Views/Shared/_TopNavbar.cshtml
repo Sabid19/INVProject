@@ -132,12 +132,40 @@
     var count = 0, count2 = 0, total = 0;
     $(document).ready(function () {
 
-        $.get('../../../Home/CheckExpiry', null, function (data) {
-            //$('.label-warning').html(data);
-            $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items to expire/expired.</a></li>');
+    //    $.get('../../../Home/CheckExpiry', null, function (data) {
+    //        //$('.label-warning').html(data);
+    //        $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items to expire/expired.</a></li>');
 
-            if (data != null)
-            {
+    //        if (data != null)
+    //        {
+    //            $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
+    //        }
+    //        else {
+    //            $('.alertNumber').append('<span class="label label-warning notifications">0</span>');
+    //        }
+
+    //        count = data;
+    //    }, 'json');
+
+    //    $.get('../../../Home/StockLevel', null, function (data) {
+    //        //$('.label-danger').html(data);
+    //        $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items are low in qty.</a></li>');
+
+    //            if (data != null) {
+    //                $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
+    //            }
+    //            else {
+    //                $('.alertNumber').append('<span class="label label-warning notifications">0</span>');
+    //            }
+    //    }, 'json');
+        //});
+
+
+        $.get('@Url.Action("CheckExpiry", "Home")', null, function (data) {
+            //$('.label-warning').html(data);
+            $('.menu').append('<li><a href="@Url.Action("Notifications", "Home")"><i class="fa fa-warning text-yellow"></i> ' + data + ' items to expire/expired.</a></li>');
+
+            if (data != null) {
                 $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
             }
             else {
@@ -147,16 +175,16 @@
             count = data;
         }, 'json');
 
-        $.get('../../../Home/StockLevel', null, function (data) {
+        $.get('@Url.Action("StockLevel", "Home")', null, function (data) {
             //$('.label-danger').html(data);
-            $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items are low in qty.</a></li>');
+            $('.menu').append('<li><a href="@Url.Action("Notifications", "Home")"><i class="fa fa-warning text-yellow"></i> ' + data + ' items are low in qty.</a></li>');
 
-                if (data != null) {
-                    $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
-                }
-                else {
-                    $('.alertNumber').append('<span class="label label-warning notifications">0</span>');
-                }
+            if (data != null) {
+                $('.alertNumber').append('<span class="label label-warning notifications">!</span>');
+            }
+            else {
+                $('.alertNumber').append('<span class="label label-warning notifications">0</span>');
+            }
         }, 'json');
     });
 
